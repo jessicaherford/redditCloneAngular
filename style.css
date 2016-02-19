@@ -1,0 +1,47 @@
+html, body{
+  padding: 0px;
+  margin: 0px;
+}
+
+header{
+  background-color: #FBFAFB;
+  padding: 20px;
+
+}
+header h1, h4, img p{
+  margin: 10px;
+  display: inline-block;
+}
+
+input{
+   margin: 10px;
+}
+
+.posts{
+  width: 90vw;
+  background-color: #FBFAFB;
+  display: block;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+.posts img{
+  float: left;
+  margin-right: 10px;
+}
+
+.author{
+  text-align: right;
+  margin-right: 15px;
+}
+
+.commentBox{
+  display: block;
+  margin: 10px auto;
+}
+
+.commentButton{
+  display: block;
+  margin: 10px auto;
+  width: 100px;
+}
