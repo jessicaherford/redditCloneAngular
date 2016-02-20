@@ -1,8 +1,7 @@
-var app = angular.module('redditClone', []);
+var app = angular.module('redditClone', ['ngAnimate']);
 
 app.controller("daController", function($scope){
   $scope.posts = [];
-  $scope.comments = [];
   $scope.commentArea = false;
   $scope.commentInput = false;
 
@@ -19,48 +18,20 @@ app.controller("daController", function($scope){
     $scope.posts.push(post);
     $scope.location = null;
     $scope.author = null;
-  },
+    $scope.bool=true;
+  }
+})
+
+
+
+app.controller('commentController', function($scope){
+  $scope.comments = [];
 
   $scope.getComments = function(){
     var comment = {};
     comment.addcomment = $scope.addcomment;
     $scope.comments.push(comment);
     console.log($scope.comments);
+    $scope.addcomment = null;
   }
 })
-
-// app.controller('commentController', function($scope){
-//   $scope.comments = [];
-//   $scope.commentArea = false;
-//   $scope.commentInput = false;
-//
-// $scope.getComments = function(){
-//   var comment = {};
-//   comment.addcomment = $scope.addcomment;
-//   $scope.comments.push(comment);
-//   console.log($scope.comments);
-// }
-//
-// })
-
-// app.controller("commentController", function($scope){
-//   $scope.comments = []
-//   $scope.newComments = false;
-//   $scope.showComments = false;
-//   $scope.ToggleCommentForm = function(){
-//     $scope.newComments = !$scope.newComments;
-//   }
-//   $scope.ToggleComment = function(){
-//     $scope.showComments = !$scope.showComments;
-//   }
-//   $scope.submitComment = function(){
-//     var comment = {};
-//     comment.commentNumber = 0;
-//     comment.commentAuthor = $scope.commentAuthor
-//     comment.comment = $scope.comment
-//     $scope.comments.push(comment);
-//     console.log($scope.comments);
-//     $scope.commentAuthor = null;
-//     $scope.comment = null;
-//   }
-// })

@@ -7,6 +7,7 @@
     <script type='text/javascript' src='index.js'></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
 
 
   </head>
@@ -16,42 +17,53 @@
     <i class="fa fa-plus"></i>
     <h4>Submit Post</h4>
     <input type="text" value='Search' ng-model="searchable">
-    <h4>Sort by votes</h4>
   </header>
   <form ng-submit='getPosts()'>
     <input type="text" ng-model="location" placeholder="Location" required>
     <input type="text" ng-model="author" placeholder="Author" required>
     <input type="text" ng-model="img" placeholder="Upload Image">
-    <input type="submit" value= 'Submit Post'>
+    <input type="submit" value= 'Submit Post' ng-click="bool=true">
   </form>
-  <div ng-repeat='post in posts | orderBy: "-upvotes"' ng-show='posts' class='posts'>
-    <img ng-src="{{post.imgUrl}}">
-    <h3>
-      {{post.location}} | <i class="fa fa-arrow-down" ng-click="post.upvotes = post.upvotes -1"> </i>
-                          <i class="fa fa-arrow-up" ng-click="post.upvotes = post.upvotes +1"></i>
-                           {{ post.upvotes | number}}
-    </h3>
-    <p class='author'>
-      By {{post.author}}
-    </p>
-    <p>
-      {{post.description}}
-    </p>
-    <p>
-      <i class="fa fa-calendar"></i>
-      {{post.date | date}} | <i class='fa fa-comment'  ng-click ="commentArea = true"> post.comments |</i>
-       <i class='fa fa-pencil' ng-click ="commentInput=true">Add Comment</i>
-    </p>
-    <p ng-show='commentArea' ng-repeat='comment in comments'>
-      {{post.comment}}
-    </p>
-      <form ng-submit='getComments()' ng-show="commentInput">
-        <input type="text" ng-model="addcomment" placeholder="Add comment." class='commentBox'>
-        <!-- <textarea name="textarea" cols="70" rows="10" ng-model="addcomment" placeholder="Add comment." class='commentBox'>
-        </textarea> -->
-        <input type="submit" value='Submit Comment' class='commentButton'>
-      </form>
-      {{ addcomment}}
+  <!-- <div ng-init="checked=true">
+  <label>
+    <input type="checkbox" ng-model="checked" style="float:left; margin-right:10px;"> Is Visible...
+  </label>
+  <div class="check-element sample-show-hide" ng-show="checked" style="clear:both;">
+    Visible...
+  </div>
+</div> -->
+  <div ng-if="bool" class="fade">
+    <div ng-repeat='post in posts | orderBy: "-upvotes" | filter:searchable' ng-show='posts' id='posts' class="posts sample-show-hide">
+      <img ng-src="{{post.imgUrl}}">
+      <h3>
+        {{post.location}} | <i class="fa fa-arrow-down" ng-click="post.upvotes = post.upvotes -1"> </i>
+                            <i class="fa fa-arrow-up" ng-click="post.upvotes = post.upvotes +1"></i>
+                             {{ post.upvotes | number}}
+      </h3>
+      <p class='author'>
+        By {{post.author}}
+      </p>
+      <p>
+        {{post.description}}
+      </p>
+      <div ng-controller='commentController'>
+      <p>
+        <i class="fa fa-calendar"></i>
+        {{post.date | date}} | <i class='fa fa-comment'  ng-click ="commentArea=true"> Post Comments |</i>
+         <i class='fa fa-pencil' ng-click ="commentInput=true">Add Comment</i>
+      </p>
+      <p ng-show='commentArea' ng-repeat='comment in comments'>
+        <!-- This is where the comments will go -->
+        {{comment.addcomment}}
+      </p>
+        <form ng-submit='getComments()' ng-show="commentInput">
+          <input type="text" ng-model="addcomment" placeholder="Add comment." class='commentBox'>
+          <!-- <textarea name="textarea" cols="70" rows="10" ng-model="addcomment" placeholder="Add comment." class='commentBox'>
+          </textarea> -->
+          <input type="submit" value='Submit Comment' class='commentButton' ng-click='commentInput=false'>
+        </form>
+      </div>
+      </div>
     </div>
   <hr>
   </body>
