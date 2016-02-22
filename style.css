@@ -1,10 +1,15 @@
+*{
+  font-family: 'Nunito', sans-serif;
+  color: #f5f5f5;
+}
 html, body{
   padding: 0px;
   margin: 0px;
+  background-color: #000;
 }
 
 header{
-  background-color: #FBFAFB;
+  background-color: #000;
   padding: 20px;
 
 }
@@ -15,14 +20,20 @@ header h1, h4, img p{
 
 input{
    margin: 10px;
+   color: #000;
+}
+
+textarea{
+  color: #000;
 }
 
 #posts{
   width: 90vw;
-  background-color: #FBFAFB;
+  background-color: #000;
   display: block;
   margin: 10px auto;
   padding: 20px;
+  border: solid blue 1px;
 }
 
 #posts img{
@@ -71,4 +82,8 @@ input{
 /* The finishing CSS styles for the enter animation */
 .fade.ng-enter.ng-enter-active {
   opacity:1;
+}
+
+i{
+  margin: 5px;
 }
