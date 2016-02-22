@@ -15,24 +15,18 @@
   <body ng-controller='daController'>
   <header>
     <h1>Reddit Clone</h1>
-    <i class="fa fa-plus"></i>
-    <h4>Submit Post</h4>
-    <input type="text" value='Search' ng-model="searchable">
+    <i class="fa fa-plus" ng-click='showPostForm=true'></i>
+    <h4  ng-click='showPostForm=true' ng-dblclick='showPostForm=false'>Submit Post</h4>
+    <input type="text" value='Search' ng-model="searchable" >
   </header>
-  <form ng-submit='getPosts()'>
-    <input type="text" ng-model="location" placeholder="Location" required>
-    <input type="text" ng-model="author" placeholder="Author" required>
-    <input type="text" ng-model="img" placeholder="Upload Image">
-    <input type="submit" value= 'Submit Post' ng-click="bool=true">
-  </form>
-  <!-- <div ng-init="checked=true">
-  <label>
-    <input type="checkbox" ng-model="checked" style="float:left; margin-right:10px;"> Is Visible...
-  </label>
-  <div class="check-element sample-show-hide" ng-show="checked" style="clear:both;">
-    Visible...
+  <div ng-model='showPostForm' ng-show='showPostForm'>
+    <form ng-submit='getPosts()'>
+      <input type="text" ng-model="location" placeholder="Location" required>
+      <input type="text" ng-model="author" placeholder="Author" required>
+      <input type="text" ng-model="img" placeholder="Upload Image">
+      <input type="submit" value= 'Submit Post' ng-click="bool=true">
+    </form>
   </div>
-</div> -->
   <div ng-if="bool" class="fade">
     <div ng-repeat='post in posts | orderBy: "-upvotes" | filter:searchable' ng-show='posts' id='posts' class="posts sample-show-hide">
       <img ng-src="{{post.imgUrl}}">
@@ -52,7 +46,7 @@
         <i class="fa fa-calendar">&nbsp;</i><span am-time-ago="post.date"> {{post.date | date}}</span> |
          <i class='fa fa-comment'  ng-click ="commentArea=true">
            {{comments.length}} {{comments.length ==1?" Comment":" Comments"}} |</i>
-         <i class='fa fa-pencil' ng-click ="commentInput=true">Add Comment</i>
+         <i class='fa fa-pencil' ng-click ="commentInput=true" ng-dblclick='commentInput=false'>Add Comment</i>
       </p>
       <p ng-show='commentArea' ng-repeat='comment in comments' ng-model='addcomment'>
         <!-- This is where the comments will go -->

@@ -4,6 +4,7 @@ app.controller("daController", function($scope){
   $scope.posts = [];
   $scope.commentArea = false;
   $scope.commentInput = false;
+  $scope.showPostForm = false;
 
   $scope.getPosts = function(){
     var post = {};
