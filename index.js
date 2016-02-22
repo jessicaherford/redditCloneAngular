@@ -1,4 +1,4 @@
-var app = angular.module('redditClone', ['ngAnimate']);
+var app = angular.module('redditClone', ['ngAnimate', 'angularMoment']);
 
 app.controller("daController", function($scope){
   $scope.posts = [];
@@ -35,3 +35,8 @@ app.controller('commentController', function($scope){
     $scope.addcomment = null;
   }
 })
+
+
+app.run(function(amMoment) {
+    amMoment.changeLocale('de');
+});
