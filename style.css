@@ -13,9 +13,15 @@ header{
   padding: 20px;
 
 }
-header h1, h4, img p{
+header h1, h4, img, p{
   margin: 10px;
   display: inline-block;
+}
+
+.postForm{
+  display: block;
+  margin: 10px auto;
+  width: 600px;
 }
 
 input{
@@ -46,6 +52,7 @@ textarea{
   margin-right: 15px;
 }
 
+
 .commentBox{
   display: block;
   margin: 10px auto;
@@ -55,8 +62,17 @@ textarea{
   display: block;
   margin: 10px auto;
   width: 100px;
+  border: solid white 1px;
+  background-color: black;
+  color: #fff;
+  padding: 10px;
 }
 
+#postButton{
+  border: solid white 1px;
+  background-color: black;
+  color: #fff;
+}
 /*Animations*/
 
 .sample-show-hide {

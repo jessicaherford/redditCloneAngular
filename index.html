@@ -20,12 +20,12 @@
     <h4  ng-click='showPostForm=true' ng-dblclick='showPostForm=false'>Submit Post</h4>
     <input type="text" value='Search' ng-model="searchable" >
   </header>
-  <div ng-model='showPostForm' ng-show='showPostForm'>
+  <div ng-model='showPostForm' ng-show='showPostForm' class='postForm'>
     <form ng-submit='getPosts()'>
       <input type="text" ng-model="location" placeholder="Location" required>
       <input type="text" ng-model="author" placeholder="Author" required>
       <input type="text" ng-model="img" placeholder="Upload Image">
-      <input type="submit" value= 'Submit Post' ng-click="bool=true">
+      <input type="submit" value= 'Submit Post' ng-click="bool=true" id='postButton' >
     </form>
   </div>
   <div ng-if="bool" class="fade">
@@ -40,7 +40,7 @@
       <p class='author'>
         By {{post.author}}
       </p>
-      <p>
+      <p class='description'>
         {{post.description}}
       </p>
       <div ng-controller='commentController'>
