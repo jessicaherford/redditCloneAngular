@@ -19,6 +19,12 @@
     <i class="fa fa-plus" ng-click='showPostForm=true'></i>
     <h4  ng-click='showPostForm=true' ng-dblclick='showPostForm=false'>Submit Post</h4>
     <input type="text" value='Search' ng-model="searchable" >
+    <h4>Sort by:</h4>
+    <select ng-model="sortBy">
+      <option value="date">Date</option>
+      <option value="location">Location</option>
+      <option value="upvotes">Votes</option>
+    </select>
   </header>
   <div ng-model='showPostForm' ng-show='showPostForm' class='postForm'>
     <form ng-submit='getPosts()'>
@@ -29,7 +35,7 @@
     </form>
   </div>
   <div ng-if="bool" class="fade">
-    <div ng-repeat='post in posts | orderBy: "-upvotes" | filter:searchable' ng-show='posts' id='posts' class="posts sample-show-hide">
+    <div ng-repeat='post in posts | orderBy: "-upvotes" | filter:searchable | orderBy:sortBy' ng-show='posts' id='posts' class="posts sample-show-hide">
       <img ng-src="{{post.imgUrl}}">
       <h3 class='location'>
         {{post.location}} | <i class="fa fa-arrow-down" ng-click="post.upvotes = post.upvotes -1"> </i>
