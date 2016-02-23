@@ -40,7 +40,10 @@
       <h3 class='location'>
         {{post.location}} | <i class="fa fa-arrow-down" ng-click="post.upvotes = post.upvotes -1"> </i>
                             <i class="fa fa-arrow-up" ng-click="post.upvotes = post.upvotes +1"></i>
-                             {{ post.upvotes | number}}
+                            <span ng-style="post.upvotes < 0 ? {'color':'red'} : {'color':'green'}">{{ post.upvotes | number}}</span>
+
+  <!-- <span>{{s.Name}}</span>
+  <span ng-style="{'color: red': s.state === 'Error', 'color: blue': s.state === 'Warning', 'color: green': s.state === 'Ignored'}">{{s.state}}</span> -->
       </h3>
       <p class='author'>
         By {{post.author}}
