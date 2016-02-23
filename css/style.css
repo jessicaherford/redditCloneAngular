@@ -13,6 +13,7 @@ header{
   padding: 20px;
 
 }
+
 header h1, h4, img, p{
   margin: 10px;
   display: inline-block;
@@ -47,11 +48,15 @@ textarea{
   margin-right: 10px;
 }
 
-.author{
-  text-align: right;
-  margin-right: 15px;
+
+#posts p{
+  clear: both;
 }
 
+.author{
+  margin-right: 15px;
+  text-align:right;
+}
 
 .commentBox{
   display: block;
